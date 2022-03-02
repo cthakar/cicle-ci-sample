@@ -23,7 +23,8 @@ jobs:
           working_directory: ~/aspnetapp/
           name: Run tests
           command: |
-            dotnet test
+            ls -altr
+            pwd
 
 # Invoke jobs via workflows
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows
