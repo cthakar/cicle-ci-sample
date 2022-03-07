@@ -1,16 +1,15 @@
 version: 2.1
-workflows:
-  main:
-    jobs:
-      - build
-      - test
-jobs:
-  build:
+executors:
+  compile-executor:
     docker:
       - image: mcr.microsoft.com/dotnet/sdk:6.0
-  steps:
-    - checkout
-    - run:
+
+jobs:
+  compile-job:
+    executor: compile-executor
+    steps:
+      - checkout
+      - run:
           # Update this line with the directory that contains your tests project file
           working_directory: ./aspnetapp/
           name: Compile
@@ -19,16 +18,4 @@ jobs:
             pwd
             dotnet restore
             dotnet publish
-  test:
-    docker:
-      - image: docker:17.05.0-ce-git
-  steps:
-    - checkout
-    - run:
-          # Update this line with the directory that contains your tests project file
-          working_directory: ./aspnetapp/
-          name: Build Docker image
-          command: |
-            ls -altr
-            pwd
-            docker  build -t tt1 . --no-cache
+
