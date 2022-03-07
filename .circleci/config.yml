@@ -25,6 +25,7 @@ jobs:
     executor: docker-executor
     steps:
       - checkout
+      - setup_remote_docker
       - run:
           # Update this line with the directory that contains your tests project file
           working_directory: ./aspnetapp/
