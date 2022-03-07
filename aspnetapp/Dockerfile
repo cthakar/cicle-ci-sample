@@ -9,4 +9,4 @@ RUN groupadd --gid $USER_GID $USERNAME \
 USER $USERNAME
 COPY ./aspnetapp ./
 EXPOSE 5000
-ENTRYPOINT ["dotnet", "aspnetapp.dll"]
+ENTRYPOINT ["dotnet", "aspnetapp.dll.dll"]

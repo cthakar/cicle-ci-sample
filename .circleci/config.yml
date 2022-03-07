@@ -24,12 +24,11 @@ jobs:
   build-docker:
     executor: docker-executor
     steps:
-      - checkout
+      # - checkout
       - setup_remote_docker
       - run:
-          # Update this line with the directory that contains your tests project file
           working_directory: ./aspnetapp/
-          name: buils-docker
+          name: build-docker
           command: |
             ls -altr
             pwd
