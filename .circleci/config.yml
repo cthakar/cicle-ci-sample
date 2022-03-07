@@ -7,7 +7,7 @@ workflows:
 jobs:
   compile:
     docker:
-      image: mcr.microsoft.com/dotnet/sdk:6.0
+      - image: mcr.microsoft.com/dotnet/sdk:6.0
   steps:
     - checkout
     - run:
@@ -21,7 +21,7 @@ jobs:
             dotnet publish
   build:
     docker:
-      image: docker:17.05.0-ce-git
+      - image: docker:17.05.0-ce-git
   steps:
     - checkout
     - run:
