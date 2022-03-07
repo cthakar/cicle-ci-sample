@@ -24,7 +24,7 @@ jobs:
   build-docker:
     executor: docker-executor
     steps:
-      # - checkout
+      - checkout
       - run:
           # Update this line with the directory that contains your tests project file
           working_directory: ./aspnetapp/
