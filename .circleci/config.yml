@@ -19,7 +19,7 @@ jobs:
             command: |
               ls -altr
               pwd
-              docker  build -t tt1 -f ../.circleci/Dockerfile . --no-cache
+              docker  build -t tt1 . --no-cache
 
 
   # Below is the definition of your job to build and test your app, you can rename and customize it as you want.
