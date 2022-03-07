@@ -21,11 +21,20 @@ jobs:
       - run:
           # Update this line with the directory that contains your tests project file
           working_directory: ./aspnetapp/
-          name: Run tests
+          name: Compile
           command: |
             ls -altr
             pwd
-            dotnet test
+            dotnet restore
+            dotnet publish
+      - run:
+          # Update this line with the directory that contains your tests project file
+          working_directory: ./aspnetapp/
+          name: Build Docker image
+          command: |
+            ls -altr
+            pwd
+            docker  build -t tt1 -f ../.circleci/Dockerfile . --no-cache
 
 # Invoke jobs via workflows
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows
