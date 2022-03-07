@@ -2,10 +2,10 @@ version: 2.1
 workflows:
   main:
     jobs:
-      - compile
       - build
+      - test
 jobs:
-  compile:
+  build:
     docker:
       - image: mcr.microsoft.com/dotnet/sdk:6.0
   steps:
@@ -19,7 +19,7 @@ jobs:
             pwd
             dotnet restore
             dotnet publish
-  build:
+  test:
     docker:
       - image: docker:17.05.0-ce-git
   steps:
