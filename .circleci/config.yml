@@ -5,7 +5,7 @@ executors:
       - image: mcr.microsoft.com/dotnet/sdk:6.0
   docker-executor:
     docker:
-      - image: docker:17.05.0-ce-git    
+      - image: docker:17.09.0-ce  
 
 jobs:
   compile:
