@@ -24,7 +24,7 @@ jobs:
   build-docker:
     executor: docker-executor
     steps:
-      - checkout
+      # - checkout
       - setup_remote_docker
       - run:
           working_directory: ./aspnetapp/
