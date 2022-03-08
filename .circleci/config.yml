@@ -1,41 +1,24 @@
-version: 2.1
-executors:
-  compile-executor:
+version: 2
+jobs:
+  build:
     docker:
       - image: mcr.microsoft.com/dotnet/sdk:6.0
-  docker-executor:
-    docker:
-      - image: docker:17.09.0-ce  
 
-jobs:
-  compile:
-    executor: compile-executor
     steps:
       - checkout
       - run:
-          # Update this line with the directory that contains your tests project file
           working_directory: ./aspnetapp/
-          name: Compile
+          name: Compile src
           command: |
             ls -altr
             pwd
             dotnet restore
             dotnet publish
-  build-docker:
-    executor: docker-executor
-    steps:
-      - checkout
-      - setup_remote_docker
+      - setup_remote_docker:
       - run:
-          working_directory: ./aspnetapp/
-          name: build-docker
+          name: Build Docker image
           command: |
             ls -altr
             pwd
             docker  build -t tt1 . --no-cache
-workflows:
-  sample: # This is the name of the workflow, feel free to change it to better match your workflow.
-    #Inside the workflow, you define the jobs you want to run.
-    jobs:
-      - compile
-      - build-docker
+ 
