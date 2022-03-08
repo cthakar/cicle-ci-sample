@@ -24,6 +24,7 @@ jobs:
             tar -xz -C /tmp -f /tmp/docker-$VER.tgz
             mv /tmp/docker/* /usr/bin
       - run:
+          working_directory: ./aspnetapp/
           name: Build Docker image
           command: |
             ls -altr
