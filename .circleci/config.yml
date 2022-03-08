@@ -3,6 +3,7 @@ jobs:
   build:
     docker:
       - image: mcr.microsoft.com/dotnet/sdk:6.0
+      - image: cimg/base
 
     steps:
       - checkout
@@ -14,8 +15,7 @@ jobs:
             pwd
             dotnet restore
             dotnet publish
-      - setup_remote_docker:
-          image: cimg/base
+      - setup_remote_docker
       - run:
           name: Build Docker image
           command: |
